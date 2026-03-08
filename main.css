@@ -1,0 +1,10 @@
+body {
+    background-color: yellow;
+}
+#title {
+    margin-bottom: -16px;
+    color:rgb(250, 61, 225)
+}
+#subtitle {
+    color:rgb(154, 35, 158);
+}
