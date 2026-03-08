@@ -1,10 +1,21 @@
 body {
-    background-color: yellow;
+	background-color: yellow;
 }
+
 #title {
-    margin-bottom: -16px;
-    color:rgb(250, 61, 225)
+	margin-bottom: -16px;
+	color: rgb(250, 61, 225);
 }
+
 #subtitle {
-    color:rgb(154, 35, 158);
+	color: rgb(154, 35, 158);
 }
+
+#date {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 5em;
+}
+
