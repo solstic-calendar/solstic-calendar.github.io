@@ -17,5 +17,13 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 5em;
+    text-align: center;
 }
 
+#solstic_month, #solstic_number {
+    color:rgb(73, 99, 247)
+}
+
+#solstic_day {
+    color:cornflowerblue
+}
