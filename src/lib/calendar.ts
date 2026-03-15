@@ -105,14 +105,17 @@ export function calendar() {
 	let day;
 	let month;
 	let dayOfMonth;
+	let oldGreg = getFirstDay();
+	oldGreg.setDate(getFirstDay().getDate() - 1);
 
 	for (let index = 0; index <= daysSince(); index++) {
 		day = getDay(index);
 		dayOfMonth = getNumber(index);
 		month = getMonth(index);
+		oldGreg.setDate(oldGreg.getDate() + 1);
 	}
 
-	return { month, day, dayOfMonth };
+	return { month, day, dayOfMonth, oldGreg };
 }
 
 function getDay(index) {
@@ -145,11 +148,16 @@ function getMonth(index) {
 	return MONTHS[Math.floor(index / 28)];
 }
 
+function getFirstDay() {
+	const now = new Date();
+	return new Date(`${CALENDAR_START}, ${now.getFullYear()}`);
+}
+
 function daysSince() {
 	const msPerDay = 24 * 60 * 60 * 1000;
 
 	const now = new Date();
-	const firstDay = new Date(`${CALENDAR_START}, ${now.getFullYear()}`);
+	const firstDay = getFirstDay();
 	const diff =
 		Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) -
 		Date.UTC(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate());
