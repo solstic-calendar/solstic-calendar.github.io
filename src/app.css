@@ -1,0 +1,29 @@
+:root {
+	--pink: rgb(250, 61, 225);
+	--blue: rgb(73, 99, 247);
+}
+
+@font-face {
+	font-family: "Aight";
+	src: url("/fonts/aaaiight.ttf");
+}
+
+@font-face {
+	font-family: "JoseFernandez";
+	src: url("/fonts/JoseFernandez.ttf");
+}
+
+@font-face {
+	font-family: "TolkeinDwarf";
+	src: url("/fonts/dwarf.ttf");
+}
+
+#all_rune_months svg {
+	width: 1em;
+	height: 1em;
+}
+
+body {
+	background-color: yellow;
+	font-family: "JoseFernandez", sans-serif;
+}

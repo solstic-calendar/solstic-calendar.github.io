@@ -1,26 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Solstic Calendar</title>
-		<script src="main.js" defer></script>
-		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 
 	<body>
-		<h1 id="title">SOLSTIC</h1>
-		<strong id="subtitle">Stellar Lunar Solar Tree Calendar</strong><br><br>
-
-		<div id="date">
-			<span id="solstic_month"></span>
-			<span id="solstic_rune"></span>
-			<span id="solstic_number"></span>
-			<div id="solstic_day"></div>
-		</div>
-		<footer>
-			<div id="all_rune_months"></div>
-			<span id="yew_rune"></span>
-		</footer>
+		<div id="app"></div>
+		<script type="module" src="/src/main.ts"></script>
 	</body>
 </html>

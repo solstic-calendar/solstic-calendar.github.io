@@ -1,8 +1,10 @@
-const ASSETS_PATH = "assets";
+import yewRune from "../assets/yew.svg?raw";
+
+export const ASSETS_PATH = "assets";
 
 const SVGS = {};
 
-const MONTHS = [
+export const MONTHS = [
 	{
 		name: "Hazel",
 		rune: "x",
@@ -45,7 +47,7 @@ const MONTHS = [
 	},
 	{
 		name: "Yew",
-		rune: `${ASSETS_PATH}/yew.svg`,
+		rune: yewRune,
 	},
 	{
 		name: "Holly",
@@ -99,39 +101,18 @@ const MOSS_MONTH = {
 
 const CALENDAR_START = "Feburary 5";
 
-main();
-
-async function main() {
+export function calendar() {
 	let day;
 	let month;
-
-	await loadAllSVGs();
+	let dayOfMonth;
 
 	for (let index = 0; index <= daysSince(); index++) {
 		day = getDay(index);
-		number = getNumber(index);
+		dayOfMonth = getNumber(index);
 		month = getMonth(index);
 	}
 
-	document.getElementById("solstic_month").textContent = month.name;
-	document.getElementById("solstic_rune").textContent = month.rune;
-	document.getElementById("solstic_number").textContent = number;
-	document.getElementById("solstic_day").textContent = day.name;
-	document.getElementById("all_rune_months").innerHTML =
-		listMonthRunes().join(" ");
-}
-
-async function loadAllSVGs() {
-	const loaders = MONTHS.filter((month) =>
-		month?.rune?.includes(ASSETS_PATH),
-	).map((month) => loadSVG(month.rune));
-
-	await Promise.allSettled(loaders);
-}
-
-async function loadSVG(path) {
-	const response = await fetch(path);
-	SVGS[path] = await response.text();
+	return { month, day, dayOfMonth };
 }
 
 function getDay(index) {
