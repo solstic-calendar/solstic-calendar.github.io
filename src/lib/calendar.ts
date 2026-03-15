@@ -101,14 +101,14 @@ const MOSS_MONTH = {
 
 const CALENDAR_START = "Feburary 5";
 
-export function calendar() {
+export function calendar(now = new Date()) {
 	let day;
 	let month;
 	let dayOfMonth;
 	let oldGreg = getFirstDay();
 	oldGreg.setDate(getFirstDay().getDate() - 1);
 
-	for (let index = 0; index <= daysSince(); index++) {
+	for (let index = 0; index <= daysSince(now); index++) {
 		day = getDay(index);
 		dayOfMonth = getNumber(index);
 		month = getMonth(index);
@@ -148,15 +148,17 @@ function getMonth(index) {
 	return MONTHS[Math.floor(index / 28)];
 }
 
-function getFirstDay() {
+export function getFirstDay() {
 	const now = new Date();
 	return new Date(`${CALENDAR_START}, ${now.getFullYear()}`);
 }
 
-function daysSince() {
+function daysSince(now: Date | undefined) {
 	const msPerDay = 24 * 60 * 60 * 1000;
 
-	const now = new Date();
+	if (now === undefined) {
+		now = new Date();
+	}
 	const firstDay = getFirstDay();
 	const diff =
 		Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) -

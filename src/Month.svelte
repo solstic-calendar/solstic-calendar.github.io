@@ -1,11 +1,16 @@
 <script>
 import { calendar } from "./lib/calendar";
 
-const today = calendar();
-
 let dayOfMonth = 1;
-let oldGreg = new Date();
-oldGreg.setDate(oldGreg.getDate() - today.dayOfMonth);
+export let date;
+const today = calendar(date);
+const isCustomDate = date.toDateString() !== new Date().toDateString();
+let oldGreg = new Date(
+	date.getFullYear(),
+	date.getMonth(),
+	date.getDate() - today.dayOfMonth,
+);
+
 const format = new Intl.DateTimeFormat("en", {
 	month: "short",
 	day: "numeric",
@@ -30,7 +35,7 @@ for (let i = 0; i < 4; i++) {
 		{#each week as day}
 			<span class="day_wrap">
 				<span
-					class="table_day {today.dayOfMonth == day.dayOfMonth
+					class="table_day {today.dayOfMonth == day.dayOfMonth && !isCustomDate
 						? 'currentDay'
 						: ''}"
 				>

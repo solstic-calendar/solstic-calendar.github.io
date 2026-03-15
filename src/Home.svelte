@@ -1,10 +1,11 @@
 <script>
-import { calendar } from "./lib/calendar";
+import { calendar, getFirstDay, MONTHS } from "./lib/calendar";
 import { randomColoured } from "./lib/utils";
 import Month from "./Month.svelte";
 import MonthRune from "./MonthRune.svelte";
 
-const today = calendar();
+let oldGreg = new Date();
+let today = calendar(oldGreg);
 </script>
 
 <h1 id="title">
@@ -22,18 +23,40 @@ const today = calendar();
 	<div id="date">
 		<span id="solstic_rune"><MonthRune month={today.month} /></span>
 		<span id="solstic_month">{today.month?.name}</span>
-		<span id="solstic_number">{today.dayOfMonth}</span>
-		<div id="solstic_day">
-			{#each randomColoured(today.day?.name, "#592925") as item}
-				<span style="color: {item.color}">{item.character}</span>
-			{/each}
-		</div>
+		{#if oldGreg.toDateString() == new Date().toDateString()}
+			<span id="solstic_number">{today.dayOfMonth}</span>
+			<div id="solstic_day">
+				{#each randomColoured(today.day?.name, "#592925") as item}
+					<span style="color: {item.color}">{item.character}</span>
+				{/each}
+			</div>
+		{/if}
 	</div>
 
 	<div id="month">
-		<Month />
+		<Month date={oldGreg} />
 	</div>
 </section>
+
+<div id="all_rune_months">
+	{#each MONTHS as month, index}
+		<a
+			id={today.month?.name == month.name ? "currentRuneMonth" : ""}
+			onclick={(event) => {
+				event.preventDefault();
+				const firstDay = getFirstDay();
+				oldGreg = new Date(
+					firstDay.getFullYear(),
+					firstDay.getMonth(),
+					firstDay.getDate() + index * 28,
+				);
+				today = calendar(oldGreg);
+			}}
+		>
+			<MonthRune {month} />
+		</a>
+	{/each}
+</div>
 
 <style>
 	section {
@@ -85,10 +108,37 @@ const today = calendar();
 		display: block;
 		font-size: 1.5em;
 		color: var(--yellow);
+		fill: var(--yellow);
 	}
 
 	#solstic_day {
 		color: var(--red);
 		font-size: 0.5em;
+	}
+
+	#all_rune_months {
+		position: fixed;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
+		width: 100%;
+		text-align: center;
+		padding: 0.75rem 1rem;
+		box-sizing: border-box;
+		z-index: 1000;
+		font-size: 2em;
+		font-family: "TolkeinDwarf", sans-serif;
+		a {
+			&:hover {
+				color: var(--orange);
+				fill: var(--orange);
+			}
+			cursor: pointer;
+		}
+	}
+
+	#currentRuneMonth {
+		color: var(--orange);
+		fill: var(--orange);
 	}
 </style>
