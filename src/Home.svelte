@@ -11,8 +11,8 @@ const today = calendar();
 
 <section>
 	<div id="date">
-		<span id="solstic_month">{today.month?.name}</span>
 		<span id="solstic_rune"><MonthRune month={today.month} /></span>
+		<span id="solstic_month">{today.month?.name}</span>
 		<span id="solstic_number">{today.dayOfMonth}</span>
 		<div id="solstic_day">{today.day?.name}</div>
 	</div>
@@ -34,12 +34,12 @@ const today = calendar();
 		font-family: "Aight", sans-serif;
 		margin-top: 0px;
 		margin-bottom: -40px;
-		color: var(--pink);
+		color: var(--red);
 		font-size: 6em;
 	}
 
 	#subtitle {
-		color: rgb(154, 35, 158);
+		color: color-mix(in srgb, var(--red) 80%, white 20%);
 		font-size: 3em;
 	}
 
@@ -55,16 +55,27 @@ const today = calendar();
 	}
 
 	#solstic_month,
-	#solstic_number,
-	#solstic_rune {
-		color: var(--blue);
+	#solstic_number {
+		background: linear-gradient(
+			to bottom,
+			var(--orange) 0%,
+			var(--yellow) 100%
+		);
+		background-clip: text;
+		color: transparent;
+		-webkit-background-clip: text; /* Chrome, Safari */
+		-webkit-text-fill-color: transparent;
 	}
 
 	#solstic_rune {
 		font-family: "TolkeinDwarf", sans-serif;
+		display: block;
+		font-size: 1.5em;
+		color: var(--yellow);
 	}
 
 	#solstic_day {
-		color: cornflowerblue;
+		color: var(--red);
+		font-size: 0.5em;
 	}
 </style>

@@ -1,6 +1,7 @@
 :root {
-	--pink: rgb(250, 61, 225);
-	--blue: rgb(73, 99, 247);
+	--orange: #ce4a20;
+	--yellow: #d9ad2b;
+	--red: #592925;
 }
 
 @font-face {
@@ -24,6 +25,6 @@
 }
 
 body {
-	background-color: yellow;
+	background-color: #ded1bc;
 	font-family: "JoseFernandez", sans-serif;
 }

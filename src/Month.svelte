@@ -35,10 +35,11 @@ for (let i = 0; i < 4; i++) {
 		width: 1em;
 		margin: 0.25em;
 		padding: 0.25em;
+		color: var(--red);
 	}
 
 	.currentDay {
-		border: 2px solid var(--blue);
+		border: 2px solid var(--orange);
 		border-radius: 5px;
 	}
 </style>

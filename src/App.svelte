@@ -38,7 +38,7 @@ const today = calendar();
 	}
 
 	.currentMonth {
-		color: var(--blue);
-		fill: var(--blue);
+		color: var(--orange);
+		fill: var(--orange);
 	}
 </style>
