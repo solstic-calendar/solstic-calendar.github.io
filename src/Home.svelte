@@ -1,20 +1,33 @@
 <script>
 import { calendar } from "./lib/calendar";
+import { randomColoured } from "./lib/utils";
 import Month from "./Month.svelte";
 import MonthRune from "./MonthRune.svelte";
 
 const today = calendar();
 </script>
 
-<h1 id="title">SOLSTIC</h1>
-<strong id="subtitle">Stellar Lunar Solar Tree Calendar</strong><br /><br />
+<h1 id="title">
+	{#each randomColoured("SOLSTIC", "#592925") as item}
+		<span style="color: {item.color}">{item.character}</span>
+	{/each}
+</h1>
+<strong id="subtitle">
+	{#each randomColoured("Stellar Lunar Solar Tree Calendar", "#592925") as item}
+		<span style="color: {item.color}">{item.character}</span>
+	{/each}
+</strong><br /><br />
 
 <section>
 	<div id="date">
 		<span id="solstic_rune"><MonthRune month={today.month} /></span>
 		<span id="solstic_month">{today.month?.name}</span>
 		<span id="solstic_number">{today.dayOfMonth}</span>
-		<div id="solstic_day">{today.day?.name}</div>
+		<div id="solstic_day">
+			{#each randomColoured(today.day?.name, "#592925") as item}
+				<span style="color: {item.color}">{item.character}</span>
+			{/each}
+		</div>
 	</div>
 
 	<div id="month">
