@@ -76,7 +76,7 @@ let today = calendar(oldGreg);
 
 	#subtitle {
 		color: color-mix(in srgb, var(--red) 80%, white 20%);
-		font-size: 3em;
+		font-size: 3em
 	}
 
 	#date {
@@ -90,8 +90,9 @@ let today = calendar(oldGreg);
 		font-size: 3em;
 	}
 
-	#solstic_month,
-	#solstic_number {
+	#solstic_month{
+		font-family: "Hardkaze";
+		font-size: 1.5em;
 		background: linear-gradient(
 			to bottom,
 			var(--orange) 0%,

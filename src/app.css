@@ -18,6 +18,10 @@
 	font-family: "TolkeinDwarf";
 	src: url("/fonts/dwarf.ttf");
 }
+@font-face {
+	font-family: "Hardkaze";
+	src: url("/fonts/HARDKAZE.TTF")
+}
 
 #all_rune_months svg {
 	width: 1em;
@@ -27,4 +31,5 @@
 body {
 	background-color: #ded1bc;
 	font-family: "JoseFernandez", sans-serif;
+	font-size: 12px;
 }

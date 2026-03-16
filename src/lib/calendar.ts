@@ -6,55 +6,55 @@ const SVGS = {};
 
 export const MONTHS = [
 	{
-		name: "Hazel",
+		name: "HAzEl",
 		rune: "x",
 	},
 	{
-		name: "Birch",
+		name: "BIRCH",
 		rune: "b",
 	},
 	{
-		name: "Alder",
+		name: "AlDER",
 		rune: "E",
 	},
 	{
-		name: "Hawthorn",
+		name: "HAwThoRn",
 		rune: "T",
 	},
 	{
-		name: "Oak",
+		name: "oAK",
 		rune: "d",
 	},
 	{
-		name: "Ash",
+		name: "AsH",
 		rune: "a",
 	},
 	{
-		name: "Rowan",
+		name: "ROWAN",
 		rune: "r",
 	},
 	{
-		name: "Apple",
+		name: "ApPle",
 		rune: "p",
 	},
 	{
-		name: "Beech",
+		name: "BEECH",
 		rune: "J",
 	},
 	{
-		name: "Willow",
+		name: "wILloW",
 		rune: "w",
 	},
 	{
-		name: "Yew",
+		name: "yeW",
 		rune: yewRune,
 	},
 	{
-		name: "Holly",
-		rune: "H",
+		name: "HOlly",
+		rune: "h",
 	},
 	{
-		name: "Pine",
+		name: "pINe",
 		rune: "c",
 	},
 ];
