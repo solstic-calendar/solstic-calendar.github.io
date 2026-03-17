@@ -1,14 +1,11 @@
 <script>
 import { calendar } from "./lib/calendar";
 
-let dayOfMonth = 1;
-export let date;
-const today = calendar(date);
-const isCustomDate = date.toDateString() !== new Date().toDateString();
-let oldGreg = new Date(
-	date.getFullYear(),
-	date.getMonth(),
-	date.getDate() - today.dayOfMonth,
+let { date } = $props();
+
+const today = $derived(calendar(date));
+const isCustomDate = $derived(
+	date.toDateString() !== new Date().toDateString(),
 );
 
 const format = new Intl.DateTimeFormat("en", {
@@ -16,18 +13,28 @@ const format = new Intl.DateTimeFormat("en", {
 	day: "numeric",
 });
 
-const days = Array.from({ length: 28 }, (_, i) => {
-	oldGreg.setDate(oldGreg.getDate() + 1);
-	return {
-		dayOfMonth: dayOfMonth + i,
-		oldGreg: new Date(oldGreg.getTime()),
-	};
-});
+const weeks = $derived.by(() => {
+	const dayOfMonthStart = 1;
+	let oldGreg = new Date(
+		date.getFullYear(),
+		date.getMonth(),
+		date.getDate() - today.dayOfMonth,
+	);
 
-const weeks = [];
-for (let i = 0; i < 4; i++) {
-	weeks.push(days.slice(i * 7, i * 7 + 7));
-}
+	const days = Array.from({ length: 28 }, (_, i) => {
+		oldGreg.setDate(oldGreg.getDate() + 1);
+		return {
+			dayOfMonth: dayOfMonthStart + i,
+			oldGreg: new Date(oldGreg.getTime()),
+		};
+	});
+
+	const result = [];
+	for (let i = 0; i < 4; i++) {
+		result.push(days.slice(i * 7, i * 7 + 7));
+	}
+	return result;
+});
 </script>
 
 {#each weeks as week}
