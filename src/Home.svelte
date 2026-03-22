@@ -134,16 +134,13 @@ let today = calendar(oldGreg);
 	}
 
 	#all_rune_months {
-		position: fixed;
-		left: 50%;
-		bottom: 0;
-		transform: translateX(-50%);
+		margin-top: 2em;
 		width: 100%;
 		text-align: center;
 		padding: 0.75rem 1rem;
 		box-sizing: border-box;
 		z-index: 1000;
-		font-size: 2em;
+		font-size: 4em;
 		font-family: "TolkeinDwarf", sans-serif;
 		a {
 			&:hover {
@@ -157,5 +154,15 @@ let today = calendar(oldGreg);
 	#currentRuneMonth {
 		color: var(--orange);
 		fill: var(--orange);
+	}
+
+	@media (max-width: 600px) {
+		#month {
+			font-size: 30px;
+		}
+
+		#all_rune_months {
+			font-size: 40px;
+		}
 	}
 </style>
