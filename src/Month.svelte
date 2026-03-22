@@ -1,5 +1,6 @@
 <script>
-import { calendar } from "./lib/calendar";
+import DayRune from "./DayRune.svelte";
+import { calendar, DAYS } from "./lib/calendar";
 
 let { date } = $props();
 
@@ -37,6 +38,14 @@ const weeks = $derived.by(() => {
 });
 </script>
 
+<div id="day_runes">
+	{#each DAYS as day}
+		<span class="day_rune">
+			<DayRune {day} />
+		</span>
+	{/each}
+</div>
+
 {#each weeks as week}
 	<div>
 		{#each week as day}
@@ -55,6 +64,19 @@ const weeks = $derived.by(() => {
 {/each}
 
 <style>
+	#day_runes {
+		display: flex;
+		align-items: center;
+		text-align: center;
+		flex-direction: row;
+	}
+
+	.day_rune {
+		flex: 1;
+		color: var(--red);
+		fill: var(--red);
+	}
+
 	.table_day {
 		display: inline-block;
 		width: 1em;
@@ -66,6 +88,7 @@ const weeks = $derived.by(() => {
 	.day_wrap {
 		display: inline-flex;
 		align-items: center;
+		text-align: center;
 		flex-direction: column;
 	}
 

@@ -1,8 +1,13 @@
 import yewRune from "../assets/yew.svg?raw";
+import yofiRune from "../assets/yofi.svg?raw";
+import yareyahRune from "../assets/yareyah.svg?raw";
+import mayimRune from "../assets/mayim.svg?raw";
+import adamahRune from "../assets/adamah.svg?raw";
+import eyshRune from "../assets/eysh.svg?raw";
+import shemeshRune from "../assets/shemesh.svg?raw";
+import sheketRune from "../assets/sheket.svg?raw";
 
 export const ASSETS_PATH = "assets";
-
-const SVGS = {};
 
 export const MONTHS = [
 	{
@@ -59,27 +64,34 @@ export const MONTHS = [
 	},
 ];
 
-const DAYS = [
+export const DAYS = [
 	{
 		name: "Yom Sheket",
+		rune: sheketRune,
 	},
 	{
 		name: "Yom Shemesh",
+		rune: shemeshRune,
 	},
 	{
 		name: "Yom Eysh",
+		rune: eyshRune,
 	},
 	{
 		name: "Yom Adamah",
+		rune: adamahRune,
 	},
 	{
 		name: "Yom Mayim",
+		rune: mayimRune,
 	},
 	{
 		name: "Yom Yareyah",
+		rune: yareyahRune,
 	},
 	{
 		name: "Yom Yofi",
+		rune: yofiRune,
 	},
 ];
 
@@ -181,14 +193,4 @@ function isMossDay(index) {
 function isLeapYear() {
 	const thisYear = new Date().getFullYear();
 	return new Date(thisYear, 1, 29).getDate() === 29;
-}
-
-function listMonthRunes() {
-	return Object.values(MONTHS).map((month) => {
-		if (!month.rune.includes(ASSETS_PATH)) {
-			return month.rune;
-		} else {
-			return SVGS[month.rune];
-		}
-	});
 }

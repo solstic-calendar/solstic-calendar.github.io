@@ -1,4 +1,5 @@
 <script>
+import DayRune from "./DayRune.svelte";
 import { calendar, getFirstDay, MONTHS } from "./lib/calendar";
 import { randomColoured } from "./lib/utils";
 import Month from "./Month.svelte";
@@ -21,7 +22,16 @@ let today = calendar(oldGreg);
 
 <section>
 	<div id="date">
-		<span id="solstic_rune"><MonthRune month={today.month} /></span>
+		<span id="solstic_runes">
+			<span id="month_rune">
+				<MonthRune month={today.month} />
+			</span>
+			{#if oldGreg.toDateString() == new Date().toDateString()}
+				<span id="day_rune">
+					<DayRune day={today.day} />
+				</span>
+			{/if}
+		</span>
 		<span id="solstic_month">{today.month?.name}</span>
 		{#if oldGreg.toDateString() == new Date().toDateString()}
 			<span id="solstic_number">{today.dayOfMonth}</span>
@@ -76,11 +86,12 @@ let today = calendar(oldGreg);
 
 	#subtitle {
 		color: color-mix(in srgb, var(--red) 80%, white 20%);
-		font-size: 3em
+		font-size: 3em;
 	}
 
 	#date {
 		margin-top: 1em;
+		margin-bottom: 1em;
 		font-size: 5em;
 		text-align: center;
 	}
@@ -90,7 +101,7 @@ let today = calendar(oldGreg);
 		font-size: 3em;
 	}
 
-	#solstic_month{
+	#solstic_month {
 		font-family: "Hardkaze";
 		font-size: 1.5em;
 		background: linear-gradient(
@@ -104,12 +115,17 @@ let today = calendar(oldGreg);
 		-webkit-text-fill-color: transparent;
 	}
 
-	#solstic_rune {
-		font-family: "TolkeinDwarf", sans-serif;
-		display: block;
-		font-size: 1.5em;
+	#solstic_runes {
+		display: flex;
 		color: var(--yellow);
 		fill: var(--yellow);
+		font-size: 1.5em;
+		align-items: center;
+		justify-content: center;
+		#month_rune {
+			width: 1em;
+			font-family: "TolkeinDwarf", sans-serif;
+		}
 	}
 
 	#solstic_day {
