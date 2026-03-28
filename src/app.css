@@ -20,7 +20,7 @@
 }
 @font-face {
 	font-family: "Hardkaze";
-	src: url("/fonts/HARDKAZE.TTF")
+	src: url("/fonts/HARDKAZE.TTF");
 }
 
 #all_rune_months svg {
@@ -32,4 +32,14 @@ body {
 	background-color: #ded1bc;
 	font-family: "JoseFernandez", sans-serif;
 	font-size: 12px;
+}
+
+a {
+	color: var(--orange);
+	fill: var(--orange);
+	text-decoration: none;
+	&:hover {
+		color: var(--yellow);
+		fill: var(--yellow);
+	}
 }

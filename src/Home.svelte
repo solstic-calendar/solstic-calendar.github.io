@@ -1,24 +1,13 @@
 <script>
+import { links } from "svelte5-router";
 import DayRune from "./DayRune.svelte";
-import { calendar, getFirstDay, MONTHS } from "./lib/calendar";
+import { calendar, MONTHS } from "./lib/calendar";
 import { randomColoured } from "./lib/utils";
-import Month from "./Month.svelte";
 import MonthRune from "./MonthRune.svelte";
 
 let oldGreg = new Date();
 let today = calendar(oldGreg);
 </script>
-
-<h1 id="title">
-	{#each randomColoured("SOLSTIC", "#592925") as item}
-		<span style="color: {item.color}">{item.character}</span>
-	{/each}
-</h1>
-<strong id="subtitle">
-	{#each randomColoured("Stellar Lunar Solar Tree Calendar", "#592925") as item}
-		<span style="color: {item.color}">{item.character}</span>
-	{/each}
-</strong><br /><br />
 
 <section>
 	<div id="date">
@@ -36,37 +25,33 @@ let today = calendar(oldGreg);
 		{#if oldGreg.toDateString() == new Date().toDateString()}
 			<span id="solstic_number">{today.dayOfMonth}</span>
 			<div id="solstic_day">
-				{#each randomColoured(today.day?.name, "#592925") as item}
+				{#each randomColoured(today.day?.name || "", "#592925") as item}
 					<span style="color: {item.color}">{item.character}</span>
 				{/each}
 			</div>
 		{/if}
 	</div>
 
-	<div id="month">
-		<Month date={oldGreg} />
-	</div>
-</section>
+	<section id="intro">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+		non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</section>
 
-<div id="all_rune_months">
-	{#each MONTHS as month, index}
-		<a
-			id={today.month?.name == month.name ? "currentRuneMonth" : ""}
-			onclick={(event) => {
-				event.preventDefault();
-				const firstDay = getFirstDay();
-				oldGreg = new Date(
-					firstDay.getFullYear(),
-					firstDay.getMonth(),
-					firstDay.getDate() + index * 28,
-				);
-				today = calendar(oldGreg);
-			}}
-		>
-			<MonthRune {month} />
-		</a>
-	{/each}
-</div>
+	<ul id="links_to_months" use:links>
+		{#each MONTHS as m}
+			<li>
+				<MonthRune month={m} />
+				<a href="/month/{m.name.toLowerCase()}" class="monthRune">
+					{m.name.toLowerCase()}
+				</a>
+			</li>
+		{/each}
+	</ul>
+</section>
 
 <style>
 	section {
@@ -76,29 +61,11 @@ let today = calendar(oldGreg);
 		align-items: center;
 	}
 
-	#title {
-		font-family: "Aight", sans-serif;
-		margin-top: 0px;
-		margin-bottom: -40px;
-		color: var(--red);
-		font-size: 6em;
-	}
-
-	#subtitle {
-		color: color-mix(in srgb, var(--red) 80%, white 20%);
-		font-size: 3em;
-	}
-
 	#date {
 		margin-top: 1em;
 		margin-bottom: 1em;
 		font-size: 5em;
 		text-align: center;
-	}
-
-	#month {
-		margin-top: 1em;
-		font-size: 3em;
 	}
 
 	#solstic_month {
@@ -133,36 +100,24 @@ let today = calendar(oldGreg);
 		font-size: 0.5em;
 	}
 
-	#all_rune_months {
-		margin-top: 2em;
-		width: 100%;
-		text-align: center;
-		padding: 0.75rem 1rem;
-		box-sizing: border-box;
-		z-index: 1000;
-		font-size: 4em;
-		font-family: "TolkeinDwarf", sans-serif;
-		a {
-			&:hover {
-				color: var(--orange);
-				fill: var(--orange);
+	#intro {
+		max-width: 900px;
+		margin: 1em;
+		font-size: 2.3em;
+	}
+
+	#links_to_months {
+		margin: 0;
+		margin-top: 1em;
+		list-style: none;
+		padding-left: 0;
+		font-size: 3em;
+		li {
+			display: flex;
+			align-items: center;
+			a {
+				margin-left: 0.5em;
 			}
-			cursor: pointer;
-		}
-	}
-
-	#currentRuneMonth {
-		color: var(--orange);
-		fill: var(--orange);
-	}
-
-	@media (max-width: 600px) {
-		#month {
-			font-size: 30px;
-		}
-
-		#all_rune_months {
-			font-size: 40px;
 		}
 	}
 </style>

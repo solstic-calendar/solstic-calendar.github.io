@@ -7,60 +7,87 @@ import eyshRune from "../assets/eysh.svg?raw";
 import shemeshRune from "../assets/shemesh.svg?raw";
 import sheketRune from "../assets/sheket.svg?raw";
 
+import hazelHTML from "../months/hazel.html?raw";
+import birchHTML from "../months/birch.html?raw";
+import alderHTML from "../months/alder.html?raw";
+import hawthornHTML from "../months/hawthorn.html?raw";
+import oakHTML from "../months/oak.html?raw";
+import ashHTML from "../months/ash.html?raw";
+import rowanHTML from "../months/rowan.html?raw";
+import appleHTML from "../months/apple.html?raw";
+import beechHTML from "../months/beech.html?raw";
+import willowHTML from "../months/willow.html?raw";
+import yewHTML from "../months/yew.html?raw";
+import hollyHTML from "../months/holly.html?raw";
+import pineHTML from "../months/pine.html?raw";
+
 export const ASSETS_PATH = "assets";
 
 export const MONTHS = [
 	{
 		name: "HAzEl",
 		rune: "x",
+		html: hazelHTML,
 	},
 	{
 		name: "BIRCH",
 		rune: "b",
+		html: birchHTML,
 	},
 	{
 		name: "AlDER",
 		rune: "E",
+		html: alderHTML,
 	},
 	{
 		name: "HAwThoRn",
 		rune: "T",
+		html: hawthornHTML,
 	},
 	{
 		name: "oAK",
 		rune: "d",
+		html: oakHTML,
 	},
 	{
 		name: "AsH",
 		rune: "a",
+		html: ashHTML,
 	},
 	{
 		name: "ROWAN",
 		rune: "r",
+		html: rowanHTML,
 	},
 	{
 		name: "ApPle",
 		rune: "p",
+		html: appleHTML,
 	},
 	{
 		name: "BEECH",
 		rune: "J",
+		html: beechHTML,
 	},
 	{
 		name: "wILloW",
 		rune: "w",
+		html: willowHTML,
 	},
 	{
 		name: "yeW",
 		rune: yewRune,
+		html: yewHTML,
 	},
 	{
 		name: "HOlly",
 		rune: "h",
+		html: hollyHTML,
 	},
 	{
 		name: "pINe",
 		rune: "c",
+		html: pineHTML,
 	},
 ];
 
